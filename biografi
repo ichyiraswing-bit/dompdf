@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biografi Asal Usul Nenek Moyang Bangsa Indonesia</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .presentation-container {
+            max-width: 1200px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .slide {
+            display: none;
+            padding: 40px;
+            min-height: 600px;
+        }
+        
+        .slide.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .slide-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .slide-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .slide-subtitle {
+            font-size: 1.2rem;
+            color: #718096;
+        }
+        
+        .bio-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .bio-table th,
+        .bio-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .bio-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+            width: 25%;
+        }
+        
+        .bio-table td {
+            background: #f8fafc;
+            color: #2d3748;
+            line-height: 1.6;
+        }
+        
+        .bio-table tr:hover td {
+            background: #edf2f7;
+            transform: scale(1.01);
+            transition: all 0.3s ease;
+        }
+        
+        .theory-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 15px 0;
+            color: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateX(-10px);
+            opacity: 0;
+            animation: slideInLeft 0.6s ease forwards;
+        }
+        
+        .theory-card:nth-child(2) { animation-delay: 0.2s; }
+        .theory-card:nth-child(3) { animation-delay: 0.4s; }
+        .theory-card:nth-child(4) { animation-delay: 0.6s; }
+        .theory-card:nth-child(5) { animation-delay: 0.8s; }
+        
+        @keyframes slideInLeft {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        .theory-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .theory-content {
+            line-height: 1.6;
+        }
+        
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            background: rgba(255,255,255,0.9);
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .nav-btn:disabled {
+            background: #cbd5e0;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+        
+        .slide-indicator {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .indicator-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #cbd5e0;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .indicator-dot.active {
+            background: #667eea;
+            transform: scale(1.2);
+        }
+        
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .evidence-card {
+            background: white;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .evidence-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .evidence-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .migration-timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideInTimeline 0.6s ease forwards;
+        }
+        
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.6s; }
+        
+        @keyframes slideInTimeline {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .timeline-dot {
+            width: 15px;
+            height: 15px;
+            background: #667eea;
+            border-radius: 50%;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .timeline-content {
+            background: #f8fafc;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border-left: 3px solid #667eea;
+            flex-grow: 1;
+        }
+        
+        .timeline-year {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+        
+        .conclusion-box {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(79, 172, 254, 0.3);
+        }
+        
+        .conclusion-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .conclusion-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 20px;
+            }
+            
+            .slide-title {
+                font-size: 2rem;
+            }
+            
+            .bio-table th,
+            .bio-table td {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+            
+            .evidence-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide Indicator -->
+        <div class="slide-indicator">
+            <span class="indicator-dot active" onclick="goToSlide(0)"></span>
+            <span class="indicator-dot" onclick="goToSlide(1)"></span>
+            <span class="indicator-dot" onclick="goToSlide(2)"></span>
+            <span class="indicator-dot" onclick="goToSlide(3)"></span>
+            <span class="indicator-dot" onclick="goToSlide(4)"></span>
+        </div>
+
+        <!-- Slide 1: Biografi Utama -->
+        <div class="slide active">
+            <div class="slide-header">
+                <h1 class="slide-title">🏛️ BIOGRAFI ASAL USUL NENEK MOYANG BANGSA INDONESIA</h1>
+                <p class="slide-subtitle">Jejak Sejarah Peradaban Nusantara</p>
+            </div>
+            
+            <table class="bio-table">
+                <tr>
+                    <th>Aspek</th>
+                    <th>Keterangan</th>
+                </tr>
+                <tr>
+                    <td><strong>Nama Populasi Utama</strong></td>
+                    <td>Austronesia dan Australo-Melanesia</td>
+                </tr>
+                <tr>
+                    <td><strong>Asal Geografis</strong></td>
+                    <td>Taiwan (Austronesia) & Afrika via Asia Tenggara (Australo-Melanesia)</td>
+                </tr>
+                <tr>
+                    <td><strong>Periode Migrasi</strong></td>
+                    <td>50.000-60.000 tahun lalu (gelombang pertama)<br>4.000-6.000 tahun lalu (gelombang kedua)</td>
+                </tr>
+                <tr>
+                    <td><strong>Jalur Migrasi</strong></td>
+                    <td>Taiwan → Filipina → Indonesia (jalur maritim)<br>Afrika → India → Asia Tenggara → Indonesia</td>
+                </tr>
+                <tr>
+                    <td><strong>Bukti Arkeologis</strong></td>
+                    <td>Fosil Homo erectus (Sangiran, Trinil)<br>Homo sapiens (Niah Cave, Leang Bulu' Sipong)</td>
+                </tr>
+                <tr>
+                    <td><strong>Teknologi Budaya</strong></td>
+                    <td>• Neolitik: Beliung persegi, gerabah cord-marked<br>• Perunggu: Nekara, kapak corong<br>• Seni cadas (45.000 tahun)</td>
+                </tr>
+                <tr>
+                    <td><strong>Ciri Genetik</strong></td>
+                    <td>• Haplogroup mitokondria: M, B, E<br>• Gradasi barat (Austronesia) - timur (Melanesia)<br>• Keberagaman tinggi akibat percampuran</td>
+                </tr>
+                <tr>
+                    <td><strong>Bahasa</strong></td>
+                    <td>Rumpun Austronesia: 700+ bahasa daerah<br>Proto-Austronesia dari Taiwan</td>
+                </tr>
+                <tr>
+                    <td><strong>Persebaran</strong></td>
+                    <td>17.000+ pulau, 1.340 suku bangsa<br>Dari Sabang hingga Merauke</td>
+                </tr>
+                <tr>
+                    <td><strong>Warisan</strong></td>
+                    <td>Keberagaman etnis, budaya maritim,<br>sistem pertanian, tradisi megalitik</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Slide 2: Teori-Teori Utama -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1 class="slide-title">📚 TEORI ASAL USUL NENEK MOYANG</h1>
+                <p class="slide-subtitle">Empat Teori Utama dalam Sains</p>
+            </div>
+            
+            <div class="theory-card" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                <div class="theory-title">1. TEORI OUT OF YUNAN (Cina Selatan)</div>
+                <div class="theory-content">
+                    <strong>Tokoh:</strong> Max Müller, Robert von Heine-Geldern<br>
+                    <strong>Konsep:</strong> Dua gelombang migrasi dari Yunan (3000-500 SM)<br>
+                    <strong>Bukti:</strong> Kesamaan artefak budaya, beliung persegi, nekara<br>
+                    <strong>Status:</strong> Teori historis, kurang didukung genetika modern
+                </div>
+            </div>
+            
+            <div class="theory-card" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                <div class="theory-title">2. TEORI NUSANTARA (Out of Indonesia)</div>
+                <div class="theory-content">
+                    <strong>Tokoh:</strong> Mohammad Yamin<br>
+                    <strong>Konsep:</strong> Indonesia sebagai pusat penyebaran ras Melayu<br>
+                    <strong>Bukti:</strong> Fosil Pithecanthropus erectus, kondisi geografis ideal<br>
+                    <strong>Status:</strong> Kurang dukungan ilmiah internasional
+                </div>
+            </div>
+            
+            <div class="theory-card" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                <div class="theory-title">3. TEORI OUT OF TAIWAN ⭐</div>
+                <div class="theory-content">
+                    <strong>Tokoh:</strong> Peter Bellwood, Robert Blust<br>
+                    <strong>Konsep:</strong> Ekspansi Austronesia dari Taiwan (6000 tahun lalu)<br>
+                    <strong>Bukti:</strong> Linguistik, genetika, arkeologi konvergen<br>
+                    <strong>Status:</strong> <em>Teori paling diterima komunitas ilmiah</em>
+                </div>
+            </div>
+            
+            <div class="theory-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <div class="theory-title">4. TEORI OUT OF AFRICA (Konteks Global)</div>
+                <div class="theory-content">
+                    <strong>Konsep:</strong> Migrasi Homo sapiens dari Afrika (70.000 tahun lalu)<br>
+                    <strong>Jalur:</strong> Afrika → India → Asia Tenggara → Indonesia<br>
+                    <strong>Implikasi:</strong> Populasi Australo-Melanesia sebagai penduduk awal<br>
+                    <strong>Status:</strong> Menjelaskan migrasi manusia modern secara global
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Bukti-Bukti Ilmiah -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1 class="slide-title">🔬 BUKTI-BUKTI ILMIAH</h1>
+                <p class="slide-subtitle">Evidence Multidisipliner</p>
+            </div>
+            
+            <div class="evidence-grid">
+                <div class="evidence-card">
+                    <div class="evidence-title">🏺 ARKEOLOGI</div>
+                    <p><strong>Situs Penting:</strong><br>
+                    • Sangiran: Homo erectus (1,8 juta tahun)<br>
+                    • Trinil: Pithecanthropus erectus<br>
+                    • Flores: Homo floresiensis<br>
+                    • Leang Bulu' Sipong: Seni cadas (45.000 tahun)</p>
+                </div>
+                
+                <div class="evidence-card">
+                    <div class="evidence-title">🧬 GENETIKA</div>
+                    <p><strong>Analisis DNA:</strong><br>
+                    • Haplogroup M (Australo-Melanesia)<br>
+                    • Haplogroup B, E (Austronesia)<br>
+                    • Gradasi genetik Barat-Timur<br>
+                    • Ancient DNA dari fosil</p>
+                </div>
+                
+                <div class="evidence-card">
+                    <div class="evidence-title">🗣️ LINGUISTIK</div>
+                    <p><strong>Bahasa Austronesia:</strong><br>
+                    • 700+ bahasa di Indonesia<br>
+                    • Proto-Austronesia dari Taiwan<br>
+                    • Diversitas terbesar di Formosa<br>
+                    • Kosakata maritim yang kaya</p>
+                </div>
+                
+                <div class="evidence-card">
+                    <div class="evidence-title">🦴 ANTROPOLOGI FISIK</div>
+                    <p><strong>Morfologi Rangka:</strong><br>
+                    • Karakteristik Mongoloid (Austronesia)<br>
+                    • Karakteristik Australoid (Melanesia)<br>
+                    • Percampuran fenotipe<br>
+                    • Variasi regional yang tinggi</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Timeline Migrasi -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1 class="slide-title">⏰ TIMELINE MIGRASI</h1>
+                <p class="slide-subtitle">Perjalanan Waktu Penghunian Indonesia</p>
+            </div>
+            
+            <div class="migration-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1,8 Juta - 70.000 Tahun Lalu</div>
+                        <p><strong>Era Homo erectus:</strong> Manusia purba pertama di Indonesia. Penemuan di Sangiran dan Trinil menunjukkan penghunian awal Jawa. Teknologi paleolitik sederhana.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">50.000 - 45.000 Tahun Lalu</div>
+                        <p><strong>Kedatangan Homo sapiens:</strong> Gelombang pertama manusia modern melalui jalur selatan. Populasi Australo-Melanesia menghuni Indonesia timur. Seni cadas tertua dunia di Sulawesi.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">6.000 - 4.000 Tahun Lalu</div>
+                        <p><strong>Ekspansi Austronesia:</strong> Migrasi dari Taiwan melalui Filipina. Membawa teknologi pertanian (padi), gerabah, dan bahasa Austronesia. Percampuran dengan populasi lokal.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">3.000 - 500 Tahun Lalu</div>
+                        <p><strong>Era Logam & Kerajaan:</strong> Teknologi perunggu dan besi. Pembentukan kerajaan-kerajaan awal. Sistem perdagangan maritim. Pengaruh Hindu-Buddha dari India.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="conclusion-box">
+                <div class="conclusion-title">KESIMPULAN ILMIAH</div>
+                <div class="conclusion-text">
+                    Bangsa Indonesia merupakan hasil percampuran kompleks antara populasi Australo-Melanesia (datang lebih awal) dengan populasi Austronesia (datang kemudian), menciptakan keberagaman genetik, budaya, dan linguistik yang luar biasa.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Persebaran Suku Bangsa -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1 class="slide-title">🗺️ PERSEBARAN SUKU BANGSA INDONESIA</h1>
+                <p class="slide-subtitle">Keberagaman Etnis Nusantara</p>
+            </div>
+            
+            <table class="bio-table">
+                <tr>
+                    <th>Wilayah</th>
+                    <th>Suku Bangsa Utama</th>
+                    <th>Karakteristik</th>
+                    <th>Komponen Genetik</th>
+                </tr>
+                <tr>
+                    <td><strong>Sumatra</strong></td>
+                    <td>Batak, Minang, Melayu, Aceh, Lampung</td>
+                    <td>Budaya maritim, Islam kuat, perdagangan</td>
+                    <td>Dominan Austronesia</td>
+                </tr>
+                <tr>
+                    <td><strong>Jawa</strong></td>
+                    <td>Jawa, Sunda, Madura, Betawi</td>
+                    <td>Padat penduduk, pertanian sawah, Hindu-Buddha-Islam</td>
+                    <td>Austronesia dengan sedikit Australo-Melanesia</td>
+                </tr>
+                <tr>
+                    <td><strong>Kalimantan</strong></td>
+                    <td>Dayak, Banjar, Kutai, Melayu</td>
+                    <td>Hutan tropis, rumah panjang, tradisi megalitik</td>
+                    <td>Campuran seimbang</td>
+                </tr>
+                <tr>
+                    <td><strong>Sulawesi</strong></td>
+                    <td>Bugis, Makassar, Toraja, Minahasa</td>
+                    <td>Pelaut ulung, arsitektur tradisional unik</td>
+                    <td>Campuran dengan kecenderungan Australo-Melanesia</td>
+                </tr>
+                <tr>
+                    <td><strong>Nusa Tenggara</strong></td>
+                    <td>Sasak, Bima, Flores, Sumba, Timor</td>
+                    <td>Budaya megalitik kuat, tenun tradisional</td>
+                    <td>Dominan Australo-Melanesia</td>
+                </tr>
+                <tr>
+                    <td><strong>Maluku</strong></td>
+                    <td>Ambon, Ternate, Tidore, Kei, Aru</td>
+                    <td>Jalur rempah, budaya bahari, sagu</td>
+                    <td>Campuran dengan Australo-Melanesia tinggi</td>
+                </tr>
+                <tr>
+                    <td><strong>Papua</strong></td>
+                    <td>Dani, Asmat, Korowai, Sentani</td>
+                    <td>Tradisi megalitik, seni ukir, sistem klen</td>
+                    <td>Dominan Australo-Melanesia (>70%)</td>
+                </tr>
+            </table>
+            
+            <div class="conclusion-box" style="background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 100%); margin-top: 30px;">
+                <div class="conclusion-title">WARISAN NENEK MOYANG</div>
+                <div class="conclusion-text">
+                    <strong>1.340 suku bangsa</strong> | <strong>700+ bahasa</strong> | <strong>17.000+ pulau</strong><br><br>
+                    "Bhinneka Tunggal Ika" - Keberagaman dalam kesatuan, cerminan sejarah migrasi kompleks yang membentuk identitas bangsa Indonesia modern.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="navigation">
+        <button class="nav-btn" onclick="prevSlide()" id="prevBtn">◀ Sebelumnya</button>
+        <button class="nav-btn" onclick="nextSlide()" id="nextBtn">Selanjutnya ▶</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const indicators = document.querySelectorAll('.indicator-dot');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            indicators[currentSlide].classList.remove('active');
+            
+            currentSlide = n;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+            
+            // Update navigation buttons
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                showSlide(currentSlide + 1);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                showSlide(currentSlide - 1);
+            }
+        }
+
+        function goToSlide(n) {
+            showSlide(n);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                prevSlide();
+            }
+        });
+
+        // Initialize
+        showSlide(0);
+
+        // Auto-play functionality (optional)
+        let autoPlayInterval;
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                if (currentSlide < totalSlides - 1) {
+                    nextSlide();
+                } else {
+                    showSlide(0);
+                }
+            }, 10000); // 10 seconds per slide
+        }
+
+        function stopAutoPlay() {
+            clearInterval(autoPlayInterval);
+        }
+
+        // Start auto-play on load (remove these lines if you don't want auto-play)
+        // startAutoPlay();
+
+        // Pause auto-play on user interaction
+        document.addEventListener('click', stopAutoPlay);
+        document.addEventListener('keydown', stopAutoPlay);
+    </script>
+</body>
+</html>
